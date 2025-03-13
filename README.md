@@ -1,4 +1,4 @@
-# Maison d'Hôte
+# Gestion des Maisons d'Hôtes
 ## Fonctionnalités du site web
 ### Rôles
 - **Owner (Propriétaire)**: Gère les maisons d'hôte, les réservations, et les informations des clients.
