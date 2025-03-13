@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>keto</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="mycss/styleSignup.css">
+      <script src="script.js"></script>
+      <!-- bootstrap css -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      
+       
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+    
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header class="header_area" id="headerDiv">
+         <script>generateHeader()</script>
+     </header>
+
+      <section class="product_description_area" style="text-align: center; margin-top: 90px;">
+         <h1>Admin Dashboard</h1>
+         <div class="container">
+             <ul class="nav nav-tabs" id="myTab" role="tablist" style="display: flex; justify-content: center;">
+                <li class="nav-item">
+                    <a class="nav-link active" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" 
+                       aria-selected="false" style="background-color: rgb(155, 5, 5); color: white; padding: 15px 25px;">Users</a>
+                </li>
+                 <li class="nav-item">
+                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#houses" role="tab" aria-controls="houses" 
+                        aria-selected="true" style="background-color: rgb(155, 5, 5); color: white; padding: 15px 25px;">Houses</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" id="rooms-tab" data-toggle="tab" href="#rooms" role="tab" aria-controls="rooms" 
+                        aria-selected="false" style="background-color: rgb(155, 5, 5); color: white; padding: 15px 25px;">Rooms</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" id="reservations-tab" data-toggle="tab" href="#reservations" role="tab" aria-controls="reservations" 
+                        aria-selected="false" style="background-color: rgb(155, 5, 5); color: white; padding: 15px 25px;">Reservations</a>
+                 </li>
+               
+             </ul>
+     
+             <div class="tab-content" id="myTabContent" style="display: flex; justify-content: center;">
+                <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
+                    <div class="table-responsive">
+                        <table class="table" style="width: 100%;"> 
+                            <thead>
+                                <tr class="text-center">
+                                   <tr class="text-center">
+                                      <th scope="col">
+                                          <i class="fas fa-user-id"></i> User ID
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-user"></i> First Name
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-user"></i> Last Name
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-envelope"></i> Email
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-phone-alt"></i> Phone
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-map-marker-alt"></i> Address
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-user-tag"></i> Role
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-check-circle"></i> Status
+                                      </th>
+                                      <th scope="col">
+                                          <i class="fas fa-cogs"></i> Actions
+                                      </th>
+                                   
+                                  </tr>                                
+                            </thead>
+                            <tbody id="usersList">
+                                <script>displayAdminUsers()</script>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                 <!-- Gestion des Maisons d'Hôtes -->
+                 <div class="tab-pane fade " id="houses" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="table-responsive">
+                      <table class="table" style="width: 100%;"> 
+                          <thead>
+                              <tr class="text-center">
+                                  <th scope="col">ID</th>
+                                  <th scope="col">House Name</th>
+                                  <th scope="col">Address</th>
+                                  <th scope="col">City</th>
+                                  <th scope="col">Owner ID</th>
+                                  <th scope="col">Owner Name</th>
+                                  <th scope="col">Owner Phone</th>
+                                  <th scope="col">Owner Email</th>
+                                  <th scope="col">Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody id="housesList">
+                           <span id="addRoom"></span>
+                              <script>displayAdminHouses()</script>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+              
+     
+                 <!-- Gestion des Chambres -->
+                 <div class="tab-pane fade" id="rooms" role="tabpanel" aria-labelledby="rooms-tab">
+                     <div class="table-responsive">
+                         <table class="table" style="width: 100%;"> 
+                             <thead>
+                                 <tr class="text-center">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Room Name</th>
+                                    <th scope="col">Capacity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Guest House Name</th>
+                                    <th scope="col">Owner Name</th> 
+                                    <th scope="col">Owner Phone</th>
+                                    <th scope="col">Owner Email</th>
+                                    <th scope="col">Actions</th>
+                
+                                 </tr>
+                             </thead>
+                             <tbody id="roomsList">
+                                 <span id="formDiv"></span>
+                                 <script>displayAdminRoom()</script>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+     
+                 <!-- Gestion des Réservations -->
+                 <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
+                     <div class="table-responsive">
+                         <table class="table" style="width: 100%;"> 
+                             <thead>
+                                 <tr class="text-center">
+                                     <th scope="col">Reservation ID</th>
+                                     <th scope="col">House Id</th>
+                                     <th scope="col">House Name</th>
+                                     <th scope="col">Room ID</th>
+                                     <th scope="col">Room Name</th>
+                                     <th scope="col">Room Capacity</th>
+                                     <th scope="col">House Address</th>
+                                     <th scope="col">Guest Id</th>
+                                     <th scope="col">Guest Name</th>
+                                     <th scope="col">Guests</th>
+                                     <th scope="col">Guest Email</th>
+                                     <th scope="col">Guest Tel</th>
+                                     <th scope="col">Check-in Date</th>
+                                     <th scope="col">Check-out Date</th>
+                                     <th scope="col">Total Price</th>
+                                     <th scope="col">Status</th>
+                                     <th scope="col">Actions</th>
+                                 </tr>
+                             </thead>
+                             <tbody id="reservationsList">
+                                 <script> displayAdminReserv()</script>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+     
+          
+                
+     
+             </div>
+         </div>
+     </section>
+     
+     
+     
+      
+      
+     
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class=" col-md-4">
+                     <h3>Contact US</h3>
+                     <ul class="conta">
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> Address</li>
+                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +01 1234569540</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>Menu Link</h3>
+                     <ul class="link_menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="about.html"> about</a></li>
+                        <li class="active"><a href="room.html">Our Room</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>News letter</h3>
+                     <form class="bottom_form">
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                     </form>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                        <p>
+                           © 2019 All Rights Reserved. Design by <a href="https://html.design/"> Free Html Templates</a>
+                           <br><br>
+                           Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+                           </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>

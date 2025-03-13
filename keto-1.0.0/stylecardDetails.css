@@ -1,0 +1,240 @@
+    /* Global Styles */
+    body {
+        background-color: #f8f8f8;
+    }
+
+    .room-check {
+        padding-bottom: 52px;
+    }
+
+    .room-item {
+        margin-bottom: 40px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .room-text {
+        overflow: hidden;
+        padding-left: 35px;
+        padding-top: 35px;
+        padding-right: 45px;
+        padding-bottom: 37px;
+        flex-grow: 1;
+        background-color: #f7f7f7;
+    }
+
+    .room-title {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .room-title h2 {
+        font-size: 36px;
+        color: #e30613;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .room-price {
+        display: block;
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    .room-price h2 {
+        font-size: 36px;
+        color: #222;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .room-price i {
+        margin-left: 10px;
+        color: #e30613;
+    }
+
+    .room-features {
+        overflow: hidden;
+    }
+
+    .room-info {
+        float: left;
+        text-align: center;
+        margin-right: 50px;
+        width: 33%;
+    }
+
+    .room-info i {
+        display: block;
+        color: #e30613;
+        margin-bottom: 10px;
+    }
+
+    .room-info {
+        display: block;
+        font-size: 14px;
+        color: #444;
+    }
+
+    .check-form {
+        padding: 40px;
+        border: 2px solid #e30613;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 8px;
+    }
+
+
+    .check-form h2 {
+        font-size: 36px;
+        font-weight: 400;
+        color: #e30613;
+        margin-bottom: 40px;
+        font-style: italic;
+        text-align: center;
+    }
+
+    .datepicker .date-select input {
+        font-size: 14px;
+        font-weight: 600;
+        color: #242424;
+        font-family: "Open Sans", sans-serif;
+        opacity: 0.7;
+        border: 2px solid #e30613;
+        height: 48px;
+        width: 180px;
+        display: block;
+        background-color: #fff;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .single-quantity p {
+        font-size: 14px;
+        color: #444;
+        text-align: center;
+        
+    }
+    
+
+   
+
+    .check-form button {
+        background-color: #e30613;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 14px 40px;
+        border-radius: 6px;
+        border: none;
+        margin-top: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .check-form button:hover {
+        background-color: #d4040b;
+    }
+
+    
+    
+    section {
+        margin-top: 50px; 
+    }
+
+    
+    .PHOTO img {
+        display: block;
+        visibility: visible ;
+        width: 100% ;
+        height: 250px ;
+        position: relative ;
+    }
+    /* Importation de la police Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    .header_area {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins', sans-serif; /* Police moderne */
+    }
+
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar .nav .nav-item .nav-link {
+        font-size: 18px; /* Texte plus grand */
+        font-weight: 600; /* Plus gras */
+        color: #000; /* Couleur noire par défaut */
+        text-transform: uppercase;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Espacement entre l'icône et le texte */
+    }
+
+    .navbar .nav .nav-item .nav-link i {
+        font-size: 16px; /* Taille des icônes */
+        color: #555; /* Couleur des icônes par défaut */
+        transition: color 0.3s ease;
+    }
+
+    .navbar .nav .nav-item .nav-link:hover i {
+        color: red; /* Icône devient rouge au survol */
+    }
+
+    .navbar .nav .nav-item .nav-link:hover {
+        color: red; /* Texte devient rouge au survol */
+        transform: scale(1.1); /* Agrandissement léger */
+    }
+
+    .navbar .nav .nav-item {
+        margin-bottom: 10px; /* Espacement entre les titres */
+    }
+
+    .navbar .nav .nav-item.submenu .dropdown-menu {
+        background: #f7f7f7;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .nav .nav-item.submenu .dropdown-menu .nav-item .nav-link {
+        color: #000;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .navbar .nav .nav-item.submenu .dropdown-menu .nav-item .nav-link:hover {
+        color: red;
+    }
+
+    .navbar-brand img {
+        max-height: 50px;
+    }
+
+    .navbar-right .cart span {
+        font-size: 20px;
+        color: #000;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-right .cart span:hover {
+        color: red;
+    }

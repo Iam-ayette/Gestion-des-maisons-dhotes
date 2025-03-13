@@ -1,0 +1,228 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="script.js"></script>
+    <title>Confirmation Order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body style="margin: 0 !important; padding: 0 !important; background-color: #eeeeee;" bgcolor="#eeeeee">
+    <div id="orderConfirmation">
+      
+         
+    </div>
+   
+    
+    
+    <script>
+      function confirmOrder() {
+    let orderId = localStorage.getItem("selectedbookingId");
+    let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    usersTab = JSON.parse(localStorage.getItem("users")) || [];
+    let housesTab = JSON.parse(localStorage.getItem("housesTab")) || [];
+    let roomsTab = JSON.parse(localStorage.getItem("roomsTab")) || [];
+
+    console.log('Selected Booking ID:', orderId);
+    console.log('Bookings:', bookings);
+    console.log('Users Tab:', usersTab);
+    console.log('Houses Tab:', housesTab);
+
+    let contenu = '';
+    for (let i = 0; i < bookings.length; i++) {
+        if (bookings[i].id == orderId) {
+            let booking = bookings[i];
+            let room = searchObjByIdAndKey(booking.roomId, "roomsTab");
+            let house = searchObjByIdAndKey(room ? room.houseId : null, "housesTab");
+
+            console.log('Room:', room);
+            console.log('House:', house);
+            let userDetails = searchObjByIdAndKey(booking.userId, "users");
+            console.log('User:', userDetails);
+            let owner = searchObjByIdAndKey(house.ownerId , "users");
+            contenu += `
+                <tbody>
+                    <tr>
+                        <td align="center" style="background-color: #eeeeee;" bgcolor="#eeeeee">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" valign="top" style="font-size:0; padding: 35px;" bgcolor="#F44336">
+                                            <div style="display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;" class="mobile-hide">
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td align="right" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 48px;">
+                                                                <table cellspacing="0" cellpadding="0" border="0" align="right">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400;"></td>
+                                                                            <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 24px;"> </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" style="padding: 35px 35px 20px 35px; background-color: #ffffff;" bgcolor="#ffffff">
+                                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;">
+                                                            <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;"><br>
+                                                            <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">Thank You For Your Reservation!</h2>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
+                                                            <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">Your reservation has been successfully confirmed. We look forward to welcoming you!</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" style="padding-top: 20px;">
+                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                                                                            <i class="fa fa-hashtag" aria-hidden="true"></i> Booking Confirmation #
+                                                                        </td>
+                                                                        <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">${booking.id}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                                                                            <i class="fa fa-bed" aria-hidden="true"></i> Room Name
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">${room ? room.name : 'Unknown'}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-home" aria-hidden="true"></i> Guesthouse Name
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${house ? house.name : 'Unknown'}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-map-marker" aria-hidden="true"></i> Guesthouse Address
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${house ? house.address : 'Unknown'}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-city" aria-hidden="true"></i> City
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${house ? house.city : 'Unknown'}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Check-In
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${booking.checkInDate}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-calendar-times" aria-hidden="true"></i> Check-Out
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${booking.checkOutDate}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-users" aria-hidden="true"></i> Guests
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${booking.numberOfGuests}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-user" aria-hidden="true"></i> User Name
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${userDetails.FN} ${userDetails.LN}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                                                                            <i class="fa fa-user-tie" aria-hidden="true"></i> Owner Name
+                                                                        </td>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">${owner.FN} ${owner.LN}</td>
+                                                                                                                                            
+                                                                    </tr>
+
+                                                                       <tr>
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+    <i class="fa fa-phone" aria-hidden="true"></i> Owner phone:
+</td>
+
+                                                                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> ${owner.tel}</td>
+                                                                                                                                            
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                       <tr>
+            <td align="center" style=" padding: 35px; background-color: #ff7361;" bgcolor="#1b9ba3">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="50%" style="max-width:600px;">
+                  
+                    <tr>
+                        <td align="center" style="padding: 25px 0 15px 0;">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr>
+                                    <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7"> <a href="basket.html" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #F44336; padding: 15px 30px; border: 1px solid #F44336; display: block;">Back to Basket</a> </td>
+                                
+                                
+                                    <td> <button class="btn btn-secondary" id="download" style="border-radius: 5px;><a href="#" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif;  text-decoration: none; border-radius: 5px;padding: 15px 30px; border: 1px solid #F44336; display: block;">
+        <i class="fa fa-download" style="margin-right: 8px;"></i> Download PDF
+    </button></td>
+                                        </tr>
+
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+                </tbody>
+            `;
+        }
+    }
+        document.getElementById("orderConfirmation").innerHTML = contenu;
+
+}
+
+
+        // Fonction pour générer le PDF
+        function generatePDF() {
+            const invoice = document.getElementById("orderConfirmation");
+            var opt = {
+                margin:0,
+                filename: 'confirmation_order.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().from(invoice).set(opt).save();
+        }
+
+        // Lorsque la page est chargée, appeler la fonction de confirmation
+        window.onload = function () {
+            confirmOrder();
+            document.getElementById("download").addEventListener("click", generatePDF);
+        }
+    </script>
+</body>
+</html>

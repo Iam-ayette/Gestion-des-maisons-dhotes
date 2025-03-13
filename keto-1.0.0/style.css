@@ -1,0 +1,372 @@
+/* Style de base */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+.form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url(images/banner3.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Conteneur principal */
+.containerr {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 550px;
+    box-shadow: inset 0 0 0 1px white;
+    margin: auto;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    
+}
+.register
+{
+    font-size: 1em;
+    color: #def2f1;
+    text-align: center;
+    margin: 30px 0;
+}
+.register a
+{
+    color: #def2f1;
+    padding-left: 3px;
+    text-decoration: none;
+}
+.register a:hover
+{
+    color:  #8B0000;
+    text-decoration: underline 2px;
+    text-underline-offset: 5px;
+}
+/* Animation des bordures */
+.containerr::before, .containerr::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white; /* Blanc pour l'animation principale */
+    box-shadow: inset 0 0 0 2px;
+    margin: -2.5%;
+    z-index: -1;
+    animation: animate 10s linear infinite;
+}
+.containerr::before {
+    color: white; /* Blanc pour l'effet secondaire */
+    animation-delay: -5s;
+}
+
+/* Animation de découpe */
+@keyframes animate {
+    0%, 100% {
+        clip: rect(0px, 390px, 2px, 0px);
+    }
+    25% {
+        clip: rect(0px, 2px, 470px, 0px);
+    }
+    50% {
+        clip: rect(460px, 390px, 470px, 0px);
+    }
+    75% {
+        clip: rect(0px, 390px, 470px, 380px);
+    }
+}
+
+/* Formulaire */
+form {
+    position: absolute;
+    padding: 20px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titre du formulaire */
+form h2 {
+    color: white; /* Texte en blanc */
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Champs d'entrée */
+.inputBox {
+    position: relative;
+    width: 350px;
+    margin-top: 40px;
+}
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 0 5px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid white; /* Bordure blanche */
+    color: white; /* Texte blanc */
+    font-size: 1.5em; /* Taille de police augmentée */
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    background: linear-gradient(to top, white 50%, white 50%); /* Animation blanche */
+    background-position: left bottom;
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease-in-out;
+    
+}
+.inputBox input:hover,
+.inputBox input:focus {
+    border-color: #1a1919; /* Bordure noire au survol */
+}
+.inputBox input:focus {
+    background-position: left bottom;
+    background-size: 100% 1px;
+}
+
+/* Labels */
+.inputBox label {
+    position: absolute;
+    left: 0;
+    padding: 20px 0 10px;
+    color: #808080; /* Gris pour les labels */
+    font-size: 1em;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+}
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+    color: #8B0000; /* Rouge sombre pour les labels actifs */
+    transform: translateY(-25px);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Icônes */
+.inputBox ion-icon {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    color: white; /* Icônes en blanc */
+    font-size: 1.7em;
+    transition: 0.5s;
+}
+.inputBox input:focus ~ ion-icon,
+.inputBox input:valid ~ ion-icon {
+    color: white; /* Icônes en blanc au focus */
+    transform: scale(1.2);
+}
+
+/* Options supplémentaires */
+.forget {
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+}
+.forget input {
+    display: none;
+    cursor: pointer;
+}
+.forget label {
+    position: relative;
+    cursor: pointer;
+    color: white; /* Texte blanc */
+    font-size: 0.9em;
+}
+.forget a {
+    color: white;/* Liens blancs */
+    font-size: 0.9em;
+    padding-left: 35px;
+    text-decoration: none;
+}
+.forget a:hover {
+    color: #333; /* Noir au survol */
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+/* Bouton de soumission */
+input[type="button"] {
+    font-size: 26px; /* Taille de police augmentée */
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin-top: 45px;
+    border-radius: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #fff; /* Fond blanc */
+    color: #8B0000; /* Texte rouge sombre */
+    cursor: pointer;
+    transition: background-color 0.5s, letter-spacing 0.3s;
+}
+input[type="submit"]:hover {
+    background-color: #8B0000; /* Fond rouge au survol */
+    color: #fff; /* Texte blanc */
+    letter-spacing: 0.3em;
+}
+
+/* Enregistrement */
+
+.containerr .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background: white;
+    font-size: 1.8em;
+    color: #0d0e21;
+    border-bottom-left-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+.banner_main {
+    background: url('images/banner3.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;  /* Remplit toute la fenêtre */
+}.modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+  }
+
+  .modal-header {
+    border: none;
+    background-color: #f9f9f9; /* Light gray background */
+  }
+
+  .modal-body {
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff; /* White for a clean look */
+  }
+
+  .modal-body h2 {
+    color: #b30000; /* Red matching the envelope */
+    font-weight: bold;
+  }
+
+  .modal-body p {
+    color: #5c5c5c; /* Neutral gray for text */
+  }
+
+  .modal-footer {
+    background-color: #f9f9f9; /* Light gray for footer */
+    justify-content: center;
+  }
+
+  .modal-footer button {
+    background-color: #b30000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .modal-footer button:hover {
+    background-color: #800000; /* Darker red for hover */
+  }
+
+  /* Full-width image */
+  .modal-body img {
+    width: 30%; /* Adjust the width to make the image smaller */
+    height: auto;
+    margin-bottom: 15px; /* Space below the image */
+  }
+  /* Importation de la police Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.header_area {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif; /* Police moderne */
+}
+
+.navbar {
+    padding: 10px 0;
+}
+
+.navbar .nav .nav-item .nav-link {
+    font-size: 18px; /* Texte plus grand */
+    font-weight: 600; /* Plus gras */
+    color: #000; /* Couleur noire par défaut */
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacement entre l'icône et le texte */
+}
+
+.navbar .nav .nav-item .nav-link i {
+    font-size: 16px; /* Taille des icônes */
+    color: #555; /* Couleur des icônes par défaut */
+    transition: color 0.3s ease;
+}
+
+.navbar .nav .nav-item .nav-link:hover i {
+    color: red; /* Icône devient rouge au survol */
+}
+
+.navbar .nav .nav-item .nav-link:hover {
+    color: red; /* Texte devient rouge au survol */
+    transform: scale(1.1); /* Agrandissement léger */
+}
+
+.navbar .nav .nav-item {
+    margin-bottom: 10px; /* Espacement entre les titres */
+}
+
+.navbar .nav .nav-item.submenu .dropdown-menu {
+    background: #f7f7f7;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav .nav-item.submenu .dropdown-menu .nav-item .nav-link {
+    color: #000;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav .nav-item.submenu .dropdown-menu .nav-item .nav-link:hover {
+    color: red;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+.navbar-right .cart span {
+    font-size: 20px;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.navbar-right .cart span:hover {
+    color: red;
+}
